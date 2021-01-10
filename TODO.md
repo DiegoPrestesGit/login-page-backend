@@ -6,13 +6,13 @@
 
 ## :new_moon: POOL OF TODOS
 
-* [ ] create the TODO.md and README.me
-* [ ] do some PostgreSQL (with Docker), probably use the typeORM with it for some DB configuration in the database folder
 * [ ] implement some tests for the services with JestJS
-* [ ] configure Insomnia with all the routes and facilities and goodies and resources that will help me in the development process
 * [ ] creating .env and .env.example for environment configurations
 * [ ] configure the password for more security: encrypt and delete the password typed by the user
-* [ ] configure a middleware for not allowing DDOS atacks 
+* [ ] configure a middleware for not allowing DDOS atacks
+* [ ] create JWT auth with a range of 24h/token
+* [ ] configure Insomnia with all the routes and facilities and goodies and resources that will help me in the development process
+* [ ] 
 
 </br>
 
@@ -24,6 +24,7 @@
 
 ## :full_moon: DONE (for now) ✓
 
-
+* [x] create the TODO.md and README.me
+* [x] do some PostgreSQL (with Docker), probably use the typeORM with it for some DB configuration in the database folder
 
 </br>
