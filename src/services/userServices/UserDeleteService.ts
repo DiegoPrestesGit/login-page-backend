@@ -1,4 +1,4 @@
-import UserRepository from '../../repositories/UserRepository'
+import UserRepository from '../../repositories/FakeUserRepository'
 
 export default class {
   public async execute(

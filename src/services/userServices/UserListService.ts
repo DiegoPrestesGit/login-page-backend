@@ -1,5 +1,5 @@
-import UserModel from '../../models/User'
-import UserRepository from '../../repositories/UserRepository'
+import UserModel from '../../database/entities/User'
+import UserRepository from '../../repositories/FakeUserRepository'
 
 export default class {
   public async execute(userRepository: UserRepository): Promise<UserModel[]> {

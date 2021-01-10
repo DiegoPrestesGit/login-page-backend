@@ -1,10 +1,10 @@
 import { Request, Response } from 'express'
 
 import UserListService from '../services/userServices/UserListService'
-import UserCreateService from '../services/userServices/UserCreateService'
+import UserCreateService from '../services/userServices/CreateUserService'
 import UserUpdateService from '../services/userServices/UserUpdateService'
 import UserDeleteService from '../services/userServices/UserDeleteService'
-import UserRepository from '../repositories/UserRepository'
+import UserRepository from '../repositories/FakeUserRepository'
 
 const userRepository = new UserRepository()
 
