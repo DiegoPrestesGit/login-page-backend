@@ -1,6 +1,6 @@
 import { uuid } from 'uuidv4'
 
-import IUserRepository from './models/IUserRepository'
+import IUserRepository from './models/IUsersRepository'
 import UserDTO from '../dtos/UserDTO'
 import User from '../database/entities/User'
 import AppError from '../errors/AppError'
@@ -24,7 +24,9 @@ export default class UserRepository implements IUserRepository {
     name,
     email,
     password
-  }: UserDTO): Promise<User> {}
+  }: UserDTO): Promise<User> {
+    throw new AppError('Method yet not implemented')
+  }
 
   public async deleteUser(id: string): Promise<void> {
     const selectedUser = this.users.find(ex => ex.id === id)

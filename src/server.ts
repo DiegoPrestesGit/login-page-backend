@@ -1,9 +1,11 @@
+import 'reflect-metadata'
 import express, { Request, Response } from 'express'
 import cors from 'cors'
 
 import AppError from './errors/AppError'
 import routes from './routes/index.routes'
 import './database'
+import './config/injectionConfig'
 
 const app = express()
 app.use(cors())
