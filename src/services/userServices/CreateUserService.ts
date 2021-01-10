@@ -17,7 +17,6 @@ export default class {
 
   public async execute(userData: RequestDTO): Promise<UserModel> {
     const user = this.usersRepository.create(userData)
-
     return user
   }
 }

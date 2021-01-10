@@ -1,10 +1,11 @@
 import { Request, Response } from 'express'
 
+import CreateUserService from '../services/userServices/CreateUserService'
 import UserListService from '../services/userServices/UserListService'
-import UserCreateService from '../services/userServices/CreateUserService'
-import UserUpdateService from '../services/userServices/UserUpdateService'
+import UpdateUserService from '../services/userServices/UpdateUserService'
 import UserDeleteService from '../services/userServices/UserDeleteService'
 import UserRepository from '../repositories/FakeUserRepository'
+import { container } from 'tsyringe'
 
 const userRepository = new UserRepository()
 
@@ -20,30 +21,26 @@ export default class UserController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { name, email, password } = request.body
 
-    const userCreate = new UserCreateService()
-    const user = await userCreate.execute(userRepository, {
-      name,
-      email,
-      password
-    })
+    const createUser = container.resolve(CreateUserService)
+    const user = await createUser.execute({ name, email, password })
 
     return response.json(user)
   }
 
-  public async update(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params
-    const { name, email, password } = request.body
-    const userCreate = new UserUpdateService()
+  // public async update(request: Request, response: Response): Promise<Response> {
+  //   const { id } = request.params
+  //   const { name, email, password } = request.body
+  //   const userCreate = new UpdateUserService()
 
-    const updatedUser = await userCreate.execute(userRepository, {
-      id,
-      name,
-      email,
-      password
-    })
+  //   const updatedUser = await userCreate.execute(userRepository, {
+  //     id,
+  //     name,
+  //     email,
+  //     password
+  //   })
 
-    return response.json(updatedUser)
-  }
+  //   return response.json(updatedUser)
+  // }
 
   public async delete(request: Request, response: Response): Promise<void> {
     const { id } = request.params

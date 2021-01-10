@@ -1,4 +1,4 @@
-import UserModel from '../../models/User'
+import UserModel from '../../database/entities/User'
 import UserDTO from '../../dtos/UserDTO'
 
 export default interface IUserRepository {
