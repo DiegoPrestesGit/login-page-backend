@@ -30,16 +30,4 @@ export default class UsersRepository implements IUserRepository {
   public async save(user: User): Promise<User> {
     return this.ormRepository.save(user)
   }
-
-  readAllUsers(): Promise<User[]> {
-    throw new AppError('Method not implemented.')
-  }
-
-  updateUser(userData: UserDTO): Promise<User> {
-    throw new AppError('Method not implemented.')
-  }
-
-  deleteUser(id: string): void {
-    throw new AppError('Method not implemented.')
-  }
 }

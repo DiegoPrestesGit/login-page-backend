@@ -5,7 +5,7 @@ import IUsersRepository from '../../repositories/models/IUsersRepository'
 import AppError from '../../errors/AppError'
 
 @injectable()
-export default class GetSingleUserService {
+export default class ShowUserService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository
@@ -17,7 +17,6 @@ export default class GetSingleUserService {
     if (!user) {
       throw new AppError('User not found')
     }
-
     return user
   }
 }

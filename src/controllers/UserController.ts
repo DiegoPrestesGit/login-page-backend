@@ -1,25 +1,15 @@
 import 'reflect-metadata'
 import { Request, Response } from 'express'
 import CreateUserService from '../services/userServices/CreateUserService'
-import UserListService from '../services/userServices/UserListService'
 import ShowUserService from '../services/userServices/ShowUserService'
 import UpdateUserService from '../services/userServices/UpdateUserService'
-import UserDeleteService from '../services/userServices/UserDeleteService'
-import UserRepository from '../repositories/FakeUserRepository'
+import UserRepository from '../repositories/fakes/FakeUserRepository'
 import { container } from 'tsyringe'
 
 const userRepository = new UserRepository()
 
 export default class UserController {
-  public async index(_: Request, response: Response): Promise<Response> {
-    const userList = new UserListService()
-
-    const allUsers = await userList.execute(userRepository)
-
-    return response.json(allUsers)
-  }
-
-  public async getOne(request: Request, response: Response): Promise<Response> {
+  public async show(request: Request, response: Response): Promise<Response> {
     const { id } = request.params
 
     const getUser = container.resolve(ShowUserService)
@@ -45,15 +35,5 @@ export default class UserController {
     const user = await updateUser.execute({ id, name, email, password })
 
     return response.json(user)
-  }
-
-  public async delete(request: Request, response: Response): Promise<void> {
-    const { id } = request.params
-
-    const userDelete = new UserDeleteService()
-
-    await userDelete.execute(userRepository, id)
-
-    response.status(200).json()
   }
 }
