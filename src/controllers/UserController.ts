@@ -28,20 +28,15 @@ export default class UserController {
     return response.json(user)
   }
 
-  // public async update(request: Request, response: Response): Promise<Response> {
-  //   const { id } = request.params
-  //   const { name, email, password } = request.body
-  //   const userCreate = new UpdateUserService()
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params
+    const { name, email, password } = request.body
+    const updateUser = container.resolve(UpdateUserService)
 
-  //   const updatedUser = await userCreate.execute(userRepository, {
-  //     id,
-  //     name,
-  //     email,
-  //     password
-  //   })
+    const user = await updateUser.execute({ id, name, email, password })
 
-  //   return response.json(updatedUser)
-  // }
+    return response.json(user)
+  }
 
   public async delete(request: Request, response: Response): Promise<void> {
     const { id } = request.params
