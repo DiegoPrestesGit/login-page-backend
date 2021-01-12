@@ -1,7 +1,8 @@
 import { uuid } from 'uuidv4'
 
 import IUserRepository from './models/IUsersRepository'
-import UserDTO from '../dtos/UserDTO'
+import CreateUserDTO from '../dtos/CreateUserDTO'
+import UpdateUserDTO from '../dtos/UpdateUserDTO'
 import User from '../database/entities/User'
 import AppError from '../errors/AppError'
 
@@ -12,7 +13,11 @@ export default class UserRepository implements IUserRepository {
     throw new Error('Method not implemented.')
   }
 
-  public async create(userData: UserDTO): Promise<User> {
+  findByEmail(email: string): Promise<User | undefined> {
+    throw new Error('Method not implemented.')
+  }
+
+  public async create(userData: CreateUserDTO): Promise<User> {
     const user = new User()
     Object.assign(user, { id: uuid() }, userData)
     this.users.push(user)
@@ -28,7 +33,7 @@ export default class UserRepository implements IUserRepository {
     name,
     email,
     password
-  }: UserDTO): Promise<User> {
+  }: UpdateUserDTO): Promise<User> {
     throw new AppError('Method yet not implemented')
   }
 
