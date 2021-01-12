@@ -7,7 +7,7 @@ import { inject, injectable } from 'tsyringe'
 @injectable()
 export default class {
   constructor(
-    @inject('IUsersRepository')
+    @inject('UsersRepository')
     private usersRepository: IUserRepository
   ) {}
 
