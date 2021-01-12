@@ -5,7 +5,7 @@ import AppError from '../../errors/AppError'
 import { inject, injectable } from 'tsyringe'
 
 @injectable()
-export default class {
+export default class UpdateUserService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUserRepository

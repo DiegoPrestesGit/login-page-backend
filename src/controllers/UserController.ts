@@ -3,6 +3,7 @@ import { Request, Response } from 'express'
 
 import CreateUserService from '../services/userServices/CreateUserService'
 import UserListService from '../services/userServices/UserListService'
+import GetSingleUserService from '../services/userServices/GetSingleUserService'
 import UpdateUserService from '../services/userServices/UpdateUserService'
 import UserDeleteService from '../services/userServices/UserDeleteService'
 import UserRepository from '../repositories/FakeUserRepository'
@@ -17,6 +18,15 @@ export default class UserController {
     const allUsers = await userList.execute(userRepository)
 
     return response.json(allUsers)
+  }
+
+  public async getOne(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params
+
+    const getUser = container.resolve(GetSingleUserService)
+    const user = await getUser.execute(id)
+
+    return response.json(user)
   }
 
   public async create(request: Request, response: Response): Promise<Response> {

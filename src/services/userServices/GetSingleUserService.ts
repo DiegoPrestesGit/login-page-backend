@@ -2,22 +2,22 @@ import 'reflect-metadata'
 import { inject, injectable } from 'tsyringe'
 import User from '../../database/entities/User'
 import IUsersRepository from '../../repositories/models/IUsersRepository'
-
-interface RequestDTO {
-  name: string
-  email: string
-  password: string
-}
+import AppError from '../../errors/AppError'
 
 @injectable()
-export default class CreateUserService {
+export default class GetSingleUserService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository
   ) {}
 
-  public async execute(userData: RequestDTO): Promise<User> {
-    const user = this.usersRepository.create(userData)
+  public async execute(id: string): Promise<User | undefined> {
+    const user = await this.usersRepository.findById(id)
+
+    if (!user) {
+      throw new AppError('User not found')
+    }
+
     return user
   }
 }

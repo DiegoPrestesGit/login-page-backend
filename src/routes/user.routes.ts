@@ -6,6 +6,7 @@ const userRouter = Router()
 const userController = new UserController()
 
 userRouter.get('/', userController.index)
+userRouter.get('/:id', userController.getOne)
 userRouter.post('/', userController.create)
 userRouter.put('/:id', userController.update)
 userRouter.delete('/:id', userController.delete)
