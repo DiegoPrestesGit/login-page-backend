@@ -11,7 +11,7 @@ export default class GetSingleUserService {
     private usersRepository: IUsersRepository
   ) {}
 
-  public async execute(id: string): Promise<User | undefined> {
+  public async execute(id: string): Promise<User> {
     const user = await this.usersRepository.findById(id)
 
     if (!user) {

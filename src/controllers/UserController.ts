@@ -1,9 +1,8 @@
 import 'reflect-metadata'
 import { Request, Response } from 'express'
-
 import CreateUserService from '../services/userServices/CreateUserService'
 import UserListService from '../services/userServices/UserListService'
-import GetSingleUserService from '../services/userServices/GetSingleUserService'
+import ShowUserService from '../services/userServices/ShowUserService'
 import UpdateUserService from '../services/userServices/UpdateUserService'
 import UserDeleteService from '../services/userServices/UserDeleteService'
 import UserRepository from '../repositories/FakeUserRepository'
@@ -23,7 +22,7 @@ export default class UserController {
   public async getOne(request: Request, response: Response): Promise<Response> {
     const { id } = request.params
 
-    const getUser = container.resolve(GetSingleUserService)
+    const getUser = container.resolve(ShowUserService)
     const user = await getUser.execute(id)
 
     return response.json(user)
