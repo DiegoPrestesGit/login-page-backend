@@ -11,19 +11,7 @@ export default class {
     private usersRepository: IUserRepository
   ) {}
 
-  public async execute(
-    { id, name, email, password }: UserDTO
-  ): Promise<User> {
-    const selectedUser = this.usersRepository.
-
-    if (selectedUser) {
-      const selectedIndex = this.usersRepository.indexOf(selectedUser)
-      const user = new User()
-      this.usersRepository = user
-
-      return user
-    } else {
-      throw new AppError('Cannot find the user by this ID.')
-    }
+  public async execute({ id, name, email, password }: UserDTO): Promise<User> {
+    const user = this.usersRepository.findById(id)
   }
 }

@@ -8,6 +8,10 @@ import AppError from '../errors/AppError'
 export default class UserRepository implements IUserRepository {
   private users: User[] = []
 
+  findById(): Promise<User> {
+    throw new Error('Method not implemented.')
+  }
+
   public async create(userData: UserDTO): Promise<User> {
     const user = new User()
     Object.assign(user, { id: uuid() }, userData)
