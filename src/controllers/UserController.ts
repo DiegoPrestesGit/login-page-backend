@@ -3,19 +3,19 @@ import { Request, Response } from 'express'
 import CreateUserService from '../services/userServices/CreateUserService'
 import ShowUserService from '../services/userServices/ShowUserService'
 import UpdateUserService from '../services/userServices/UpdateUserService'
-import UserRepository from '../repositories/fakes/FakeUserRepository'
 import { container } from 'tsyringe'
-
-const userRepository = new UserRepository()
 
 export default class UserController {
   public async show(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params
+    try {
+      const { id } = request.params
+      const getUser = container.resolve(ShowUserService)
+      const user = await getUser.execute(id)
 
-    const getUser = container.resolve(ShowUserService)
-    const user = await getUser.execute(id)
-
-    return response.json(user)
+      return response.json(user)
+    } catch (err) {
+      return response.status(err.statusCode).send(err.status)
+    }
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
