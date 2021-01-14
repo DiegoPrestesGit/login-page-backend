@@ -29,7 +29,7 @@ export default class UserController {
 
       return response.json(user)
     } catch (err) {
-      return response.status(400).json({
+      return response.status(err.statusCode).json({
         status: err.statusCode,
         message: err.message
       })
