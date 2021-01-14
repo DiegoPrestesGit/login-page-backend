@@ -23,7 +23,6 @@ describe('CreateUser', () => {
       password: '123456'
     })
 
-    console.log(fakeUsersRepository.findByEmail('johnnycasher@gloiro.com'))
     expect(user).toHaveProperty('id')
   })
 

@@ -18,7 +18,7 @@ export default class CreateUserService {
   ) {}
 
   public async execute(userData: RequestDTO): Promise<User> {
-    const userEmail = this.usersRepository.findByEmail(userData.email)
+    const userEmail = await this.usersRepository.findByEmail(userData.email)
     if (userEmail) {
       throw new AppError('e-mail already taken')
     }
