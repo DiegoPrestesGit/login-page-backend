@@ -14,17 +14,26 @@ export default class UserController {
 
       return response.json(user)
     } catch (err) {
-      return response.status(err.statusCode).send(err.status)
+      return response.status(err.statusCode).json({
+        status: err.statusCode,
+        message: err.message
+      })
     }
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, email, password } = request.body
+    try {
+      const { name, email, password } = request.body
+      const createUser = container.resolve(CreateUserService)
+      const user = await createUser.execute({ name, email, password })
 
-    const createUser = container.resolve(CreateUserService)
-    const user = await createUser.execute({ name, email, password })
-
-    return response.json(user)
+      return response.json(user)
+    } catch (err) {
+      return response.status(400).json({
+        status: err.statusCode,
+        message: err.message
+      })
+    }
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
