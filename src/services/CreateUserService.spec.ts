@@ -1,5 +1,5 @@
-import AppError from '../../errors/AppError'
-import FakeUsersRepository from '../../repositories/fakes/FakeUserRepository'
+import AppError from '../errors/AppError'
+import FakeUsersRepository from '../repositories/fakes/FakeUserRepository'
 import CreateUserService from './CreateUserService'
 
 let fakeUsersRepository: FakeUsersRepository

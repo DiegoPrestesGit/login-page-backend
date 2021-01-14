@@ -1,8 +1,8 @@
 import 'reflect-metadata'
 import { inject, injectable } from 'tsyringe'
-import User from '../../database/entities/User'
-import IUsersRepository from '../../repositories/models/IUsersRepository'
-import AppError from '../../errors/AppError'
+import User from '../database/entities/User'
+import IUsersRepository from '../repositories/models/IUsersRepository'
+import AppError from '../errors/AppError'
 
 @injectable()
 export default class ShowUserService {

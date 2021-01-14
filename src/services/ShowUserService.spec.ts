@@ -3,8 +3,8 @@
  * Should not be able to show a user that not exist
  */
 
-import AppError from '../../errors/AppError'
-import FakeUsersRepository from '../../repositories/fakes/FakeUserRepository'
+import AppError from '../errors/AppError'
+import FakeUsersRepository from '../repositories/fakes/FakeUserRepository'
 import CreateUserService from './CreateUserService'
 import ShowUserService from './ShowUserService'
 

@@ -1,7 +1,7 @@
-import User from '../../database/entities/User'
-import IUserRepository from '../../repositories/models/IUsersRepository'
-import UpdateUserDTO from '../../dtos/UpdateUserDTO'
-import AppError from '../../errors/AppError'
+import User from '../database/entities/User'
+import IUserRepository from '../repositories/models/IUsersRepository'
+import UpdateUserDTO from '../dtos/UpdateUserDTO'
+import AppError from '../errors/AppError'
 import { inject, injectable } from 'tsyringe'
 
 @injectable()
