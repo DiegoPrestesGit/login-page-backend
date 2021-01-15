@@ -1,7 +1,3 @@
-/** TODO
- * Should not update the email if the email is already taken
- */
-
 import AppError from '../errors/AppError'
 import FakeUsersRepository from '../repositories/fakes/FakeUserRepository'
 import CreateUserService from './CreateUserService'
