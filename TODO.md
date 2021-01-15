@@ -6,8 +6,6 @@
 
 ## :new_moon: POOL OF TODOS
 
-* [ ] FIX: Error when throwing AppError
-* [ ] implement some tests for the services with JestJS
 * [ ] creating .env and .env.example for environment configurations
 * [ ] configure the password for more security: encrypt and delete the password typed by the user
 * [ ] configure a middleware for not allowing DDOS atacks
@@ -29,5 +27,7 @@
 * [x] create the TODO.md and README.me
 * [x] do some PostgreSQL (with Docker), probably use the typeORM with it for some DB configuration in the database folder
 * [x] start working with tsyringe for depencency injection
+* [x] FIX: Error when throwing AppError
+* [x] implement some tests for the services with JestJS
 
 </br>
