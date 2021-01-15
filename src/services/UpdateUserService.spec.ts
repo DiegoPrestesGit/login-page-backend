@@ -1,5 +1,5 @@
 /** TODO
- * Should not create a new user, but update an existing one
+ * Should not update the email if the email is already taken
  */
 
 import AppError from '../errors/AppError'
@@ -39,9 +39,21 @@ describe('CreateUser', () => {
   })
 
   it('should not be able to create a new user with same email from another', async () => {
+    const user = await fakeUsersRepository.create({
+      name: 'Johnny Cash',
+      email: 'johnnycasher@gloiro.com',
+      password: '123456'
+    })
+
+    const otherUser = await fakeUsersRepository.create({
+      name: 'Johnny Cash',
+      email: 'johnnycasher2@gloiro.com',
+      password: '123456'
+    })
+
     await expect(
       updateUserService.execute({
-        id: 'it-does-not-exist',
+        id: otherUser.id,
         name: 'Johnny Cash',
         email: 'johnnycasher@gloiro.com',
         password: '123456'
