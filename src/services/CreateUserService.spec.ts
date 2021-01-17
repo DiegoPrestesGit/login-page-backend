@@ -1,10 +1,7 @@
-/**
- * Should encrypt the user password
- */
-
 import AppError from '../errors/AppError'
 import FakeUsersRepository from '../repositories/fakes/FakeUserRepository'
 import CreateUserService from './CreateUserService'
+import HashConfig from '../config/CryptographyConfig'
 
 let fakeUsersRepository: FakeUsersRepository
 let createUserService: CreateUserService
@@ -39,5 +36,18 @@ describe('CreateUser', () => {
         password: '123456'
       })
     ).rejects.toBeInstanceOf(AppError)
+  })
+
+  it('should encrypt the user password', async () => {
+    const hashConfig = new HashConfig()
+    const password = '123456'
+    const user = await createUserService.execute({
+      name: 'Johnny Cash',
+      email: 'johnnycasher@gloiro.com',
+      password
+    })
+    const decodedOne = await hashConfig.compareHash(password, user.password)
+
+    expect(decodedOne).toBe(true)
   })
 })
