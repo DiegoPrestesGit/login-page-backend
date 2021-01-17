@@ -1,5 +1,6 @@
 /**
- * should not be able to update a user without the right password
+ * should be able to update a user without the right password
+ * should be able to update a user without password
  * should encrypt the new user password when the changes his password
  * (IN THE FUTURE) should be able to update the user password
  */
@@ -23,19 +24,21 @@ describe('CreateUser', () => {
     hashConfig = new HashConfig()
   })
 
-  it('Should be able to update a existing user', async () => {
-    const user = await fakeUsersRepository.create({
+  it('Should be able to update a existing user with password', async () => {
+    const user = await createUserService.execute({
       name: 'Johnny Cash',
       email: 'johnnycasher@gloiro.com',
       password: '123456'
     })
 
-    const outPassword = 'we-are-updating'
+    console.log(user)
 
+    const outPassword = 'we-are-updating'
     const userUpdated = await updateUserService.execute({
       id: user.id,
       name: 'Update Johnny',
       email: 'john_the_revelator@gloiro.com',
+      old_password: '123456',
       password: outPassword
     })
 
@@ -57,13 +60,13 @@ describe('CreateUser', () => {
   })
 
   it('should not be able to create a new user with same email from another', async () => {
-    const user = await fakeUsersRepository.create({
+    const user = await createUserService.execute({
       name: 'Johnny Cash',
       email: 'johnnycasher@gloiro.com',
       password: '123456'
     })
 
-    const otherUser = await fakeUsersRepository.create({
+    const otherUser = await createUserService.execute({
       name: 'Johnny Cash',
       email: 'johnnycasher2@gloiro.com',
       password: '123456'

@@ -17,6 +17,7 @@ export default class UpdateUserService {
     id,
     name,
     email,
+    old_password,
     password
   }: UpdateUserDTO): Promise<User> {
     const user = await this.usersRepository.findById(id)
@@ -30,11 +31,29 @@ export default class UpdateUserService {
       throw new AppError('Sorry, email already taken')
     }
 
+    if (password && !old_password) {
+      throw new AppError('Inform the old password to continue')
+    }
+
     const hashConfig = new HashConfig()
-    const hashedOne = await hashConfig.generateHash(password)
-    user.name = name
-    user.email = email
-    user.password = hashedOne
+    if (password && old_password) {
+      const checkOldPassword = await hashConfig.compareHash(
+        old_password,
+        user.password
+      )
+
+      if (!checkOldPassword) {
+        throw new AppError('The old password does not match')
+      }
+
+      const hashedOne = await hashConfig.generateHash(password)
+      user.name = name
+      user.email = email
+      user.password = hashedOne
+    } else {
+      user.name = name
+      user.email = email
+    }
 
     return this.usersRepository.save(user)
   }
