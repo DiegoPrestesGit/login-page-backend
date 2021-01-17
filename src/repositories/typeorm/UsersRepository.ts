@@ -2,7 +2,6 @@ import User from '../../database/entities/User'
 import { getRepository, Repository } from 'typeorm'
 import IUserRepository from '../models/IUsersRepository'
 import UserDTO from '../../dtos/CreateUserDTO'
-import AppError from '../../errors/AppError'
 
 export default class UsersRepository implements IUserRepository {
   private ormRepository: Repository<User>

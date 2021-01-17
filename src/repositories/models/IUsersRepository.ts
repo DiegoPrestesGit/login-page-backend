@@ -1,10 +1,5 @@
 import User from '../../database/entities/User'
-
-interface UserDTO {
-  name: string
-  email: string
-  password: string
-}
+import UserDTO from '../../dtos/CreateUserDTO'
 
 export default interface IUserRepository {
   create(data: UserDTO): Promise<User>
