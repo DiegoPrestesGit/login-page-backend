@@ -1,3 +1,8 @@
+/**
+ * Should not be able to update a user without the right password
+ * Should encrypt the new user password when the changes his password
+ */
+
 import AppError from '../errors/AppError'
 import FakeUsersRepository from '../repositories/fakes/FakeUserRepository'
 import CreateUserService from './CreateUserService'
