@@ -1,7 +1,3 @@
-/**
- * should encrypt the new user password when the changes his password
- */
-
 import AppError from '../errors/AppError'
 import FakeUsersRepository from '../repositories/fakes/FakeUserRepository'
 import CreateUserService from './CreateUserService'
@@ -73,7 +69,7 @@ describe('CreateUser', () => {
   })
 
   it('should not be able to create a new user with same email from another', async () => {
-    const user = await createUserService.execute({
+    await createUserService.execute({
       name: 'Johnny Cash',
       email: 'johnnycasher@gloiro.com',
       password: '123456'
