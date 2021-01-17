@@ -9,12 +9,6 @@
 
 Here is a login page backend
 
-<div align="center">
- <h1>TODO :milky_way: <h1>
-</div>
-
-</br>
-
 ## :new_moon: POOL OF TODOS
 
 * [ ] implement the redis cache database
