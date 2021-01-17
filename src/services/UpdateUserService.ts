@@ -1,8 +1,10 @@
+import { inject, injectable } from 'tsyringe'
+
 import User from '../database/entities/User'
 import IUserRepository from '../repositories/models/IUsersRepository'
 import UpdateUserDTO from '../dtos/UpdateUserDTO'
 import AppError from '../errors/AppError'
-import { inject, injectable } from 'tsyringe'
+import HashConfig from '../config/CryptographyConfig'
 
 @injectable()
 export default class UpdateUserService {
@@ -28,9 +30,11 @@ export default class UpdateUserService {
       throw new AppError('Sorry, email already taken')
     }
 
+    const hashConfig = new HashConfig()
+    const hashedOne = await hashConfig.generateHash(password)
     user.name = name
     user.email = email
-    user.password = password
+    user.password = hashedOne
 
     return this.usersRepository.save(user)
   }
