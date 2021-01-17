@@ -6,6 +6,7 @@
 
 ## :new_moon: POOL OF TODOS
 
+* [ ] implement the redis cache database
 * [ ] configure a middleware for not allowing DDOS atacks
 * [ ] create JWT auth middleware with a range of 24h/token
 * [ ] learn to use mock in repositories and services
