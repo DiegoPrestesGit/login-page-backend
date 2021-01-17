@@ -34,6 +34,17 @@ describe('CreateUser', () => {
     expect(userUpdated.password).toBe('we-are-updating')
   })
 
+  it('Should not update a user that does not exist', async () => {
+    expect(
+      updateUserService.execute({
+        id: 'this-id-does-not-exist',
+        name: 'Johnny Cash',
+        email: 'johnnycasher@gloiro.com',
+        password: '123456'
+      })
+    ).rejects.toBeInstanceOf(AppError)
+  })
+
   it('should not be able to create a new user with same email from another', async () => {
     const user = await fakeUsersRepository.create({
       name: 'Johnny Cash',
