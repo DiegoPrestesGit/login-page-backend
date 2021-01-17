@@ -1,8 +1,5 @@
 /**
- * should be able to update a user without the right password
- * should be able to update a user without password
  * should encrypt the new user password when the changes his password
- * (IN THE FUTURE) should be able to update the user password
  */
 
 import AppError from '../errors/AppError'
@@ -24,14 +21,12 @@ describe('CreateUser', () => {
     hashConfig = new HashConfig()
   })
 
-  it('Should be able to update a existing user with password', async () => {
+  it('should be able to update a existing user with password', async () => {
     const user = await createUserService.execute({
       name: 'Johnny Cash',
       email: 'johnnycasher@gloiro.com',
       password: '123456'
     })
-
-    console.log(user)
 
     const outPassword = 'we-are-updating'
     const userUpdated = await updateUserService.execute({
@@ -48,7 +43,25 @@ describe('CreateUser', () => {
     expect(await hashConfig.compareHash(outPassword, user.password)).toBe(true)
   })
 
-  it('Should not update a user that does not exist', async () => {
+  it('should be able to update the user without alter the password', async () => {
+    const user = await createUserService.execute({
+      name: 'Johnny Cash',
+      email: 'johnnycasher@gloiro.com',
+      password: '123456'
+    })
+
+    const userUpdated = await updateUserService.execute({
+      id: user.id,
+      name: 'Update Johnny',
+      email: 'john_the_revelator@gloiro.com'
+    })
+
+    expect(userUpdated.id).toBe(user.id)
+    expect(userUpdated.name).toBe('Update Johnny')
+    expect(userUpdated.email).toBe('john_the_revelator@gloiro.com')
+  })
+
+  it('should not update a user that does not exist', async () => {
     expect(
       updateUserService.execute({
         id: 'this-id-does-not-exist',
@@ -78,6 +91,41 @@ describe('CreateUser', () => {
         name: 'Johnny Cash',
         email: 'johnnycasher@gloiro.com',
         password: '123456'
+      })
+    ).rejects.toBeInstanceOf(AppError)
+  })
+
+  it('should not be able to update the user with the wrong password', async () => {
+    const user = await createUserService.execute({
+      name: 'Johnny Cash',
+      email: 'johnnycasher@gloiro.com',
+      password: '123456'
+    })
+
+    await expect(
+      updateUserService.execute({
+        id: user.id,
+        name: 'Update Johnny',
+        email: 'john_the_revelator@gloiro.com',
+        old_password: '54345',
+        password: 'outPassword'
+      })
+    ).rejects.toBeInstanceOf(AppError)
+  })
+
+  it('should not be able to update the user with password and no old password', async () => {
+    const user = await createUserService.execute({
+      name: 'Johnny Cash',
+      email: 'johnnycasher@gloiro.com',
+      password: '123456'
+    })
+
+    await expect(
+      updateUserService.execute({
+        id: user.id,
+        name: 'Update Johnny',
+        email: 'john_the_revelator@gloiro.com',
+        password: 'outPassword'
       })
     ).rejects.toBeInstanceOf(AppError)
   })
