@@ -20,7 +20,6 @@ export default class ShowUserService {
     }
 
     const { name, email } = user
-
     const showUser: ShowUserDTO = {
       id,
       name,
@@ -28,7 +27,6 @@ export default class ShowUserService {
     }
 
     delete showUser.password
-
     return showUser
   }
 }
