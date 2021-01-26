@@ -38,4 +38,5 @@ Here is a login page backend
 
 ## License
 
-MIT License © Template for Typescript Projects
+MIT License © 2020 Diego Prestes, DPSynth.com
+
