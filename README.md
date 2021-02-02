@@ -11,6 +11,10 @@ Here is a login page backend
 
 ## :new_moon: POOL OF TODOS
 
+* [ ] create the auth user route
+* [ ] make sure auth is working fine
+* [ ] create the tests for the new route (auth user)
+* [ ] make the api connectable
 * [ ] create JWT auth middleware with a range of 24h/token
 
 </br>
@@ -39,4 +43,3 @@ Here is a login page backend
 ## License
 
 MIT License © 2020 Diego Prestes, DPSynth.com
-
