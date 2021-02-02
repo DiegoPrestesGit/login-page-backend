@@ -39,7 +39,6 @@ Here is a login page backend
 
 </br>
 
-
 ## License
 
 MIT License © 2020 Diego Prestes, DPSynth.com
