@@ -1,6 +1,5 @@
 import 'reflect-metadata'
 import { Request, Response } from 'express'
-// import { container } from 'tsyringe'
 
 export default class UserController {
   public async create(request: Request, response: Response): Promise<Response> {
