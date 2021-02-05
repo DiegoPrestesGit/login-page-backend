@@ -11,10 +11,9 @@ Here is a login page backend
 
 ## :new_moon: POOL OF TODOS
 
-* [ ] create the auth user route
 * [ ] make sure auth is working fine
 * [ ] create the tests for the new route (auth user)
-* [ ] make the api connectable
+* [ ] make the api connectable (cors connecting with Angular http client)
 * [ ] create JWT auth middleware with a range of 24h/token
 
 </br>
@@ -36,6 +35,7 @@ Here is a login page backend
 * [x] creating .env and .env.example for environment configurations
 * [x] configure Insomnia with all the routes and facilities and goodies and resources that will help me in the development process
 * [x] configure the password for more security: encrypt and delete the password typed by the user
+* [x] create the auth user route
 
 </br>
 
