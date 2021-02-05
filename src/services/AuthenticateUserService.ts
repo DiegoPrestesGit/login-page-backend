@@ -1,10 +1,11 @@
-// import { sign } from 'jsonwebtoken'
+import { sign } from 'jsonwebtoken'
 import { inject, injectable } from 'tsyringe'
 
 import IUserRepository from 'repositories/models/IUsersRepository'
 import User from '../database/entities/User'
 import AppError from '../errors/AppError'
 import CryptoConfig from '../config/CryptographyConfig'
+import authConfig from '../config/authConfig'
 
 interface RequestDTO {
   email: string
@@ -37,6 +38,13 @@ export default class AuthenticateUserService {
       throw new AppError('incorrect email/password', 401)
     }
 
-    // still needs the JWT part
+    const { secret, expiresIn } = authConfig.jwt
+
+    const token = sign({}, secret, {
+      subject: user.id,
+      expiresIn
+    })
+
+    return { user, token }
   }
 }
