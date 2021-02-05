@@ -17,7 +17,7 @@ interface ResponseDTO {
 }
 
 @injectable()
-class AuthenticateUserService {
+export default class AuthenticateUserService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUserRepository
