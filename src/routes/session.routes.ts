@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import UserController from '../controllers/UserController'
+import SessionController from '../controllers/SessionController'
 
-const userRouter = Router()
+const sessionRouter = Router()
 
-const userController = new UserController()
-userRouter.post('/', userController.create)
+const sessionController = new SessionController()
+sessionRouter.post('/', sessionController.create)
 
-export default userRouter
+export default sessionRouter

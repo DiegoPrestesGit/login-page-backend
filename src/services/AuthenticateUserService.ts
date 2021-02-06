@@ -1,7 +1,7 @@
 import { sign } from 'jsonwebtoken'
 import { inject, injectable } from 'tsyringe'
 
-import IUserRepository from 'repositories/models/IUsersRepository'
+import IUserRepository from '../repositories/models/IUsersRepository'
 import User from '../database/entities/User'
 import AppError from '../errors/AppError'
 import CryptoConfig from '../config/CryptographyConfig'
