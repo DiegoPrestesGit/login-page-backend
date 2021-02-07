@@ -1,10 +1,10 @@
 import { inject, injectable } from 'tsyringe'
 
-import User from '../database/entities/User'
 import IUserRepository from '../repositories/models/IUsersRepository'
 import UpdateUserDTO from '../dtos/UpdateUserDTO'
 import AppError from '../errors/AppError'
 import HashConfig from '../config/CryptographyConfig'
+import ShowUserDTO from 'dtos/ShowUserDTO'
 
 @injectable()
 export default class UpdateUserService {
@@ -19,7 +19,7 @@ export default class UpdateUserService {
     email,
     old_password,
     password
-  }: UpdateUserDTO): Promise<User> {
+  }: UpdateUserDTO): Promise<ShowUserDTO> {
     const user = await this.usersRepository.findById(id)
     const userWithEmail = await this.usersRepository.findByEmail(email)
 
@@ -55,6 +55,14 @@ export default class UpdateUserService {
       user.email = email
     }
 
-    return this.usersRepository.save(user)
+    await this.usersRepository.save(user)
+
+    const showUser: ShowUserDTO = {
+      id,
+      name,
+      email
+    }
+
+    return showUser
   }
 }

@@ -36,6 +36,7 @@ Here is a login page backend
 * [x] configure Insomnia with all the routes and facilities and goodies and resources that will help me in the development process
 * [x] configure the password for more security: encrypt and delete the password typed by the user
 * [x] create the auth user route
+* [x] use the "ShowUserDTO" to retun the users in the routes that is not used yet
 
 </br>
 

@@ -25,7 +25,6 @@ export default class ShowUserService {
       email
     }
 
-    delete showUser.password
     return showUser
   }
 }

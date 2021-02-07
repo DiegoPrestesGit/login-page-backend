@@ -2,10 +2,10 @@ import { sign } from 'jsonwebtoken'
 import { inject, injectable } from 'tsyringe'
 
 import IUserRepository from '../repositories/models/IUsersRepository'
-import User from '../database/entities/User'
 import AppError from '../errors/AppError'
 import CryptoConfig from '../config/CryptographyConfig'
 import authConfig from '../config/authConfig'
+import ShowUserDTO from '../dtos/ShowUserDTO'
 
 interface RequestDTO {
   email: string
@@ -13,7 +13,7 @@ interface RequestDTO {
 }
 
 interface ResponseDTO {
-  user: User
+  showUser: ShowUserDTO
   token: string
 }
 
@@ -45,6 +45,14 @@ export default class AuthenticateUserService {
       expiresIn
     })
 
-    return { user, token }
+    const { id, name } = user
+
+    const showUser: ShowUserDTO = {
+      id,
+      name,
+      email
+    }
+
+    return { showUser, token }
   }
 }

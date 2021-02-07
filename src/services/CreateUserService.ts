@@ -1,9 +1,9 @@
 import 'reflect-metadata'
 import { inject, injectable } from 'tsyringe'
-import User from '../database/entities/User'
 import IUsersRepository from '../repositories/models/IUsersRepository'
 import AppError from '../errors/AppError'
 import HashConfig from '../config/CryptographyConfig'
+import ShowUserDTO from '../dtos/ShowUserDTO'
 
 interface RequestDTO {
   name: string
@@ -18,7 +18,11 @@ export default class CreateUserService {
     private usersRepository: IUsersRepository
   ) {}
 
-  public async execute({ name, email, password }: RequestDTO): Promise<User> {
+  public async execute({
+    name,
+    email,
+    password
+  }: RequestDTO): Promise<ShowUserDTO> {
     const userEmail = await this.usersRepository.findByEmail(email)
     if (userEmail) {
       throw new AppError('e-mail already taken')
@@ -27,12 +31,19 @@ export default class CreateUserService {
     const hashConfig = new HashConfig()
     const hashedOne = await hashConfig.generateHash(password)
 
-    const user = this.usersRepository.create({
+    const user = await this.usersRepository.create({
       name,
       email,
       password: hashedOne
     })
 
-    return user
+    const { id } = user
+    const showUserDTO: ShowUserDTO = {
+      id,
+      name,
+      email
+    }
+
+    return showUserDTO
   }
 }

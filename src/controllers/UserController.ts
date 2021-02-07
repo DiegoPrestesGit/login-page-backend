@@ -27,7 +27,7 @@ export default class UserController {
       const createUser = container.resolve(CreateUserService)
       const user = await createUser.execute({ name, email, password })
 
-      return response.json(user)
+      return response.status(201).json(user)
     } catch (err) {
       return response.status(err.statusCode).json({
         status: err.statusCode,
