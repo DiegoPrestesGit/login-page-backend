@@ -11,7 +11,7 @@ Here is a login page backend
 
 ## :new_moon: POOL OF TODOS
 
-* [ ] create the ensure auth in the middlewares to run in the routes that needs auth
+* [ ] make sure the auth route and auth middleware is runnning smooth
 * [ ] create the tests for the new route (auth user)
 * [ ] make the api connectable (cors connecting with Angular http client)
 * [ ] create JWT auth middleware with a range of 24h/token
@@ -38,6 +38,7 @@ Here is a login page backend
 * [x] create the auth user route
 * [x] use the "ShowUserDTO" to retun the users in the routes that is not used yet
 * [x] make sure auth is working fine
+* [x] create the ensure auth in the middlewares to run in the routes that needs auth
 
 </br>
 
