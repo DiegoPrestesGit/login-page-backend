@@ -31,16 +31,4 @@ describe('CreateUser', () => {
       showUserService.execute('id-that-doesnt-exits')
     ).rejects.toBeInstanceOf(AppError)
   })
-
-  it('should not return the user password', async () => {
-    const user = await createUserService.execute({
-      name: 'Johnny Cash',
-      email: 'johnnycasher@gloiro.com',
-      password: '123456'
-    })
-
-    const showUser = await showUserService.execute(user.id)
-
-    expect(showUser.password).toBeUndefined()
-  })
 })

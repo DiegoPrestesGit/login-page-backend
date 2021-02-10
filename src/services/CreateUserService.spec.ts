@@ -37,17 +37,4 @@ describe('CreateUser', () => {
       })
     ).rejects.toBeInstanceOf(AppError)
   })
-
-  it('should encrypt the user password', async () => {
-    const hashConfig = new HashConfig()
-    const password = '123456'
-    const user = await createUserService.execute({
-      name: 'Johnny Cash',
-      email: 'johnnycasher@gloiro.com',
-      password
-    })
-    const decodedOne = await hashConfig.compareHash(password, user.password)
-
-    expect(decodedOne).toBe(true)
-  })
 })
