@@ -1,4 +1,3 @@
-import { query } from 'express'
 import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 
 export class CreateUsers1610140340595 implements MigrationInterface {
