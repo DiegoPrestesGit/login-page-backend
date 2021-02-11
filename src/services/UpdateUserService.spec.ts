@@ -2,19 +2,16 @@ import AppError from '../errors/AppError'
 import FakeUsersRepository from '../repositories/fakes/FakeUserRepository'
 import CreateUserService from './CreateUserService'
 import UpdateUserService from './UpdateUserService'
-import HashConfig from '../config/CryptographyConfig'
 
 let fakeUsersRepository: FakeUsersRepository
 let createUserService: CreateUserService
 let updateUserService: UpdateUserService
-let hashConfig: HashConfig
 
 describe('CreateUser', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository()
     createUserService = new CreateUserService(fakeUsersRepository)
     updateUserService = new UpdateUserService(fakeUsersRepository)
-    hashConfig = new HashConfig()
   })
 
   it('should be able to update a existing user with password', async () => {
@@ -36,7 +33,6 @@ describe('CreateUser', () => {
     expect(userUpdated.id).toBe(user.id)
     expect(userUpdated.name).toBe('Update Johnny')
     expect(userUpdated.email).toBe('john_the_revelator@gloiro.com')
-    expect(await hashConfig.compareHash(outPassword, user.password)).toBe(true)
   })
 
   it('should be able to update the user without alter the password', async () => {
