@@ -42,6 +42,10 @@ Here is a login page backend
 
 </br>
 
+## Little Notes
+
+* ``git rm -r --cached .`` for clear the git cache
+
 ## License
 
 MIT License © 2020 Diego Prestes, DPSynth.com
