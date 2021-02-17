@@ -11,11 +11,11 @@ Here is a login page backend
 
 ## :new_moon: POOL OF TODOS
 
-* [ ] make the api connectable (cors connecting with Angular http client)
+* [ ] refactor tests
 
 </br>
 
-## :first_quarter_moon: DOING 
+## :first_quarter_moon: DOING
 
 <img alt="JinxedFixed" src="./git_assets/jinxfix.gif" />
 
@@ -39,6 +39,7 @@ Here is a login page backend
 * [x] make sure the auth route and auth middleware is runnning smooth
 * [x] create the tests for the new route (auth user)
 * [x] create JWT auth middleware with a range of 24h/token
+* [x] make the api connectable (cors connecting with Angular http client)
 
 </br>
 
