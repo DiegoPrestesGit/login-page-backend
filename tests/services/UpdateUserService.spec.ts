@@ -1,7 +1,7 @@
-import AppError from '../errors/AppError'
-import FakeUsersRepository from '../repositories/fakes/FakeUserRepository'
-import CreateUserService from './CreateUserService'
-import UpdateUserService from './UpdateUserService'
+import AppError from '../../src/errors/AppError'
+import FakeUsersRepository from '../mocks/FakeUserRepository'
+import CreateUserService from '../../src/services/CreateUserService'
+import UpdateUserService from '../../src/services/UpdateUserService'
 
 let fakeUsersRepository: FakeUsersRepository
 let createUserService: CreateUserService

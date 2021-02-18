@@ -1,7 +1,7 @@
 import { uuid } from 'uuidv4'
-import IUserRepository from '../models/IUsersRepository'
-import CreateUserDTO from '../../dtos/CreateUserDTO'
-import User from '../../database/entities/User'
+import IUserRepository from '../../src/repositories/models/IUsersRepository'
+import CreateUserDTO from '../../src/dtos/CreateUserDTO'
+import User from '../../src/database/entities/User'
 
 export default class UserRepository implements IUserRepository {
   private users: User[] = []
