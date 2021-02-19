@@ -11,7 +11,7 @@ Here is a login page backend
 
 ## :new_moon: POOL OF TODOS
 
-* [ ] refactor tests
+*it is with the frontend, for now*
 
 </br>
 
@@ -40,6 +40,7 @@ Here is a login page backend
 * [x] create the tests for the new route (auth user)
 * [x] create JWT auth middleware with a range of 24h/token
 * [x] make the api connectable (cors connecting with Angular http client)
+* [x] refactor tests
 
 </br>
 
