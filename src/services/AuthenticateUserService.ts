@@ -38,7 +38,7 @@ export default class AuthenticateUserService {
       throw new AppError('incorrect email/password', 401)
     }
 
-    const { secret, expiresIn } = authConfig.jwt
+    const { secret, expiresIn } = authConfig
 
     const token = sign({}, secret, {
       subject: user.id,
