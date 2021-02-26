@@ -19,4 +19,18 @@ export default class UserController {
       })
     }
   }
+
+  public async show(request: Request, response: Response): Promise<Response> {
+    try {
+      const xqdl = request.headers.authorization
+      console.log(xqdl)
+
+      return response.json({})
+    } catch (err) {
+      return response.status(err.statusCode).json({
+        status: err.statusCode,
+        message: err.message
+      })
+    }
+  }
 }

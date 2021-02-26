@@ -24,7 +24,6 @@ export default class ShowUserService {
       name,
       email
     }
-
     return showUser
   }
 }
