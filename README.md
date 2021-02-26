@@ -11,7 +11,8 @@ Here is a login page backend
 
 ## :new_moon: POOL OF TODOS
 
-*it is with the frontend, for now*
+* [ ] create a route for validation of the JWT
+* [ ] create the 
 
 </br>
 
