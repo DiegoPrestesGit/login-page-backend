@@ -28,11 +28,10 @@ export default class UserController {
       if (authorization === 'Bearer' || !authorization) {
         throw new AppError('Your token has inspired', 401)
       }
-      const [_, token] = authorization?.split(' ')
+      const [_, token] = authorization.split(' ')
 
       const authorizeUser = container.resolve(AuthorizeUser)
       const authorizer = authorizeUser.execute(token)
-      console.log(authorizer)
       return response.json(authorizer)
     } catch (err) {
       return response.status(err.statusCode).json({
