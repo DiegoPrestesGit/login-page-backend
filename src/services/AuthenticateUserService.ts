@@ -30,7 +30,6 @@ export default class AuthenticateUserService {
     if (!user) {
       throw new AppError('incorrect email/password combination', 401)
     }
-
     const crypto = new CryptoConfig()
     const passwordMatch = await crypto.compareHash(password, user.password)
 
@@ -41,9 +40,11 @@ export default class AuthenticateUserService {
     const { secret, expiresIn } = authConfig
 
     const token = sign({}, secret, {
+      // algorithm: 'RS256',
       subject: user.id,
       expiresIn
     })
+    console.log('XQDLZADA')
 
     const { id, name } = user
 
