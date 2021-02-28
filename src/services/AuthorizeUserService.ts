@@ -1,12 +1,22 @@
-import { verify } from 'jsonwebtoken'
+import { verify, JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken'
 import authConfig from '../config/authConfig'
 
 export default class AuthorizeUserService {
-  public execute(token: string) {
+  public async execute(token: string) {
     try {
-      // this service needs some implementations
-      const verification = verify(token, authConfig.secret)
+      const verification = verify(token, authConfig.secret, (err, decoded) => {
+        console.log(decoded)
+        if (!decoded) {
+          throw err
+            ? new JsonWebTokenError(err.message)
+            : new JsonWebTokenError('Invalid JWT')
+        }
+        return decoded
+      })
+
       return verification
-    } catch (err) {}
+    } catch (err) {
+      return err
+    }
   }
 }

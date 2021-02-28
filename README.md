@@ -17,7 +17,6 @@ Here is a login page backend
 ## :first_quarter_moon: DOING
 
 * [ ] create tests for the new authorization route (the jwt validation)
-* [ ] fix the implementation of the jwt route
 
 <img alt="JinxedFixed" src="./git_assets/jinxfix.gif" />
 
@@ -44,6 +43,7 @@ Here is a login page backend
 * [x] make the api connectable (cors connecting with Angular http client)
 * [x] refactor tests
 * [x] create a route for validation of the JWT
+* [x] fix the implementation of the jwt route
 
 </br>
 
