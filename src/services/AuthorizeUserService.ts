@@ -1,5 +1,6 @@
-import { verify, JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken'
+import { verify, JsonWebTokenError } from 'jsonwebtoken'
 import authConfig from '../config/authConfig'
+import AppError from '../errors/AppError'
 
 export default class AuthorizeUserService {
   public async execute(token: string) {
@@ -8,9 +9,10 @@ export default class AuthorizeUserService {
         console.log(decoded)
         if (!decoded) {
           throw err
-            ? new JsonWebTokenError(err.message)
-            : new JsonWebTokenError('Invalid JWT')
+            ? new AppError(err.message, 401)
+            : new AppError('Invalid JWT', 401)
         }
+
         return decoded
       })
 

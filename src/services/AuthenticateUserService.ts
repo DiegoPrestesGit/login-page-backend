@@ -40,11 +40,9 @@ export default class AuthenticateUserService {
     const { secret, expiresIn } = authConfig
 
     const token = sign({}, secret, {
-      // algorithm: 'RS256',
       subject: user.id,
       expiresIn
     })
-    console.log('XQDLZADA')
 
     const { id, name } = user
 

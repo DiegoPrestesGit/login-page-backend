@@ -11,7 +11,7 @@ export default class UserController {
       const { id } = request.params
       const getUser = container.resolve(ShowUserService)
       const user = await getUser.execute(id)
-
+      console.log(user)
       return response.json(user)
     } catch (err) {
       return response.status(err.statusCode).json({
