@@ -34,11 +34,10 @@ export default class UserController {
       const authorizeUser = container.resolve(AuthorizeUser)
       const authorizer = await authorizeUser.execute(token)
 
-      if (!authorizer) {
+      if (authorizer.statusCode === 401) {
         throw new AppError('Invalid JWT', 401)
       }
 
-      // console.log(authorizer)
       return response.json(authorizer)
     } catch (err) {
       return response.status(err.statusCode).json({

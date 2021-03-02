@@ -1,4 +1,4 @@
-import { verify, JsonWebTokenError } from 'jsonwebtoken'
+import { verify } from 'jsonwebtoken'
 import authConfig from '../config/authConfig'
 import AppError from '../errors/AppError'
 
@@ -6,7 +6,6 @@ export default class AuthorizeUserService {
   public async execute(token: string) {
     try {
       const verification = verify(token, authConfig.secret, (err, decoded) => {
-        console.log(decoded)
         if (!decoded) {
           throw err
             ? new AppError(err.message, 401)
