@@ -1,7 +1,6 @@
 import 'reflect-metadata'
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
-import { JsonWebTokenError } from 'jsonwebtoken'
 import AuthenticateUser from '../services/AuthenticateUserService'
 import AuthorizeUser from '../services/AuthorizeUserService'
 import AppError from '../errors/AppError'
@@ -29,12 +28,10 @@ export default class UserController {
       if (authorization === 'Bearer' || !authorization) {
         throw new AppError('Your token has inspired', 401)
       }
-      console.log('authorization', authorization)
       const [_, token] = authorization.split(' ')
-
       const authorizeUser = container.resolve(AuthorizeUser)
       const authorizer = await authorizeUser.execute(token)
-      console.log('authorizerService', authorizer)
+
       if (authorizer.statusCode === 401) {
         throw new AppError('Invalid JWT', 401)
       }
