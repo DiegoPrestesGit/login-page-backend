@@ -17,10 +17,6 @@ Here is a login page backend
 
 ## :first_quarter_moon: DOING
 
-* [ ] create tests for the new authorization route (the jwt validation)
-* [ ] configure fuse to the BR (it is currently in the US standard)
-* [ ] update insomnia_routes.json
-
 <img alt="JinxedFixed" src="./git_assets/jinxfix.gif" />
 
 </br>
