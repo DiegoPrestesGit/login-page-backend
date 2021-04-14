@@ -11,8 +11,6 @@ Here is a login page backend
 
 ## :new_moon: POOL OF TODOS
 
-* [ ] check how to make JWT generate his APP_SECRET automatically
-
 </br>
 
 ## :first_quarter_moon: DOING
